@@ -2,19 +2,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-
 dotenv.config();
-
 const authRoutes = require('./routes/auth');
 const shiftRoutes = require('./routes/shifts');
-
 const app = express();
 
 // Middleware
 app.use(cors({
   origin: 'https://cashpilot-frontend.onrender.com',
-  credentials: true
-}))
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Handle preflight requests
+app.options('*', cors());
+
 app.use(express.json());
 
 // Connect to MongoDB
