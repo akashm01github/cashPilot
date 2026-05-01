@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // ✅ CREATE axios instance
 const API = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://cashpilot-hlzk.onrender.com'
 })
 
 // ✅ ADD THIS (token interceptor)
